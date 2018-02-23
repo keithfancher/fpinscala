@@ -102,5 +102,10 @@ object List { // `List` companion object. Contains functions for creating and wo
     foldLeft(l, List[A]())((b, a) => Cons(a, b))
   }
 
+  // TODO: 3.13 Write foldLeft in terms of foldRight and vice versa
+
+  def appendWithFold[A](as: List[A], bs: List[A]): List[A] =
+    foldRight(as, bs)((a, b) => Cons(a, b))
+
   def map[A,B](l: List[A])(f: A => B): List[B] = ???
 }
