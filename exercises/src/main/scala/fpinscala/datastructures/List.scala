@@ -136,4 +136,10 @@ object List { // `List` companion object. Contains functions for creating and wo
       val Cons(bh, bt) = bs
       Cons(h + bh, addListElements(t, bt))
   }
+
+  def zipWith[A,B,C](a: List[A], b: List[B])(f: (A, B) => C): List[C] = (a,b) match {
+    case (Nil, _) => Nil
+    case (_, Nil) => Nil
+    case (Cons(h1,t1), Cons(h2,t2)) => Cons(f(h1, h2), zipWith(t1,t2)(f))
+  }
 }
